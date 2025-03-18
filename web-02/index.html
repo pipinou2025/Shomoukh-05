@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shomoukh | تألقي بأجمل التصاميم</title>
+    <!-- استخدام نسخة مخزنة محلياً من Font Awesome -->
+    <link rel="stylesheet" href="libs/fontawesome/css/all.min.css">
+    <!-- تحميل احتياطي للخطوط -->
+    <link rel="stylesheet" href="libs/fonts/tajawal.css">
+    <link rel="stylesheet" href="elegant-style.css">
+    <!-- استخدام نسخة مخزنة محلياً من jQuery -->
+    <script src="libs/jquery/jquery-3.6.0.min.js" defer></script>
+    <!-- استخدام نسخة مخزنة محلياً من Select2 -->
+    <script src="libs/select2/select2.min.js" defer></script>
+    <link rel="stylesheet" href="libs/select2/select2.min.css">
+</head>
+<body>
+    <!-- الهيدر مع الشعار -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="images/chamoukh-logo.png" alt="شعار متجر شموخ" class="logo">
+                </div>
+                <div class="store-name-container">
+                    <h1 class="store-name"><span class="fancy-initial">S</span>homoukh</h1>
+                </div>
+                <p class="tagline">تألقي بأجمل التصاميم</p>
+                
+                <div class="header-actions">
+                    <button class="admin-btn" onclick="showAdminLogin()">
+                        <i class="fas fa-user-lock"></i>
+                    </button>
+                    <button class="cart-btn" onclick="showCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي للمنتجات -->
+    <main>
+        <div class="container">
+            <section class="products-section">
+                <h2 class="section-title">BY RIMA</h2>
+                
+                <div class="products-grid">
+                    <!-- منتج 1 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/dress1.jpg" alt="فستان سهرة أنيق">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">فستان سهرة أنيق</h3>
+                            <p class="product-price">12000 دج</p>
+                            <button class="add-to-cart-btn" onclick="addToCart(1, 'فستان سهرة أنيق', 12000, 'images/dress1.jpg')">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>أضف للسلة</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- منتج 2 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/dress2.jpg" alt="فستان زفاف أبيض">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">فستان زفاف أبيض</h3>
+                            <p class="product-price">25000 دج</p>
+                            <button class="add-to-cart-btn" onclick="addToCart(2, 'فستان زفاف أبيض', 25000, 'images/dress2.jpg')">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>أضف للسلة</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- منتج 3 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/dress3.jpg" alt="فستان تطريز ذهبي">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">فستان تطريز ذهبي</h3>
+                            <p class="product-price">18000 دج</p>
+                            <button class="add-to-cart-btn" onclick="addToCart(3, 'فستان تطريز ذهبي', 18000, 'images/dress3.jpg')">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>أضف للسلة</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- منتج 4 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/dress4.jpg" alt="فستان حفلة راقي">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">فستان حفلة راقي</h3>
+                            <p class="product-price">15000 دج</p>
+                            <button class="add-to-cart-btn" onclick="addToCart(4, 'فستان حفلة راقي', 15000, 'images/dress4.jpg')">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>أضف للسلة</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- سلة المشتريات -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">سلة المشتريات</h2>
+                <button type="button" class="close-btn" onclick="hideCart()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+            </div>
+            <div class="modal-footer">
+                <div class="total-container">
+                    <span>المجموع:</span>
+                    <span id="total-price">0 دج</span>
+                </div>
+                <button type="button" class="btn-checkout" onclick="checkout()">متابعة الشراء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة معلومات التوصيل -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="back-btn" onclick="backToCart()"><i class="fas fa-arrow-right"></i></button>
+                <h2 class="modal-title">معلومات التوصيل</h2>
+                <button type="button" class="close-btn" onclick="hideCheckout()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="checkout-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">الاسم</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName">اللقب</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" maxlength="10" pattern="[0-9]{10}" required>
+                        <small>يجب ألا يتجاوز 10 أرقام</small>
+                    </div>
+                    
+                    <div class="form-group province-select-container">
+                        <label for="province">الولاية</label>
+                        <select id="province" class="province-select" required>
+                            <option value="">--اختر الولاية--</option>
+                            <option value="أدرار">أدرار</option>
+                            <option value="الشلف">الشلف</option>
+                            <option value="الأغواط">الأغواط</option>
+                            <option value="أم البواقي">أم البواقي</option>
+                            <option value="باتنة">باتنة</option>
+                            <option value="بجاية">بجاية</option>
+                            <option value="بسكرة">بسكرة</option>
+                            <option value="بشار">بشار</option>
+                            <option value="البليدة">البليدة</option>
+                            <option value="البويرة">البويرة</option>
+                            <option value="تمنراست">تمنراست</option>
+                            <option value="تبسة">تبسة</option>
+                            <option value="تلمسان">تلمسان</option>
+                            <option value="تيارت">تيارت</option>
+                            <option value="تيزي وزو">تيزي وزو</option>
+                            <option value="الجزائر">الجزائر</option>
+                            <option value="الجلفة">الجلفة</option>
+                            <option value="جيجل">جيجل</option>
+                            <option value="سطيف">سطيف</option>
+                            <option value="سعيدة">سعيدة</option>
+                            <option value="سكيكدة">سكيكدة</option>
+                            <option value="سيدي بلعباس">سيدي بلعباس</option>
+                            <option value="عنابة">عنابة</option>
+                            <option value="قالمة">قالمة</option>
+                            <option value="قسنطينة">قسنطينة</option>
+                            <option value="المدية">المدية</option>
+                            <option value="مستغانم">مستغانم</option>
+                            <option value="المسيلة">المسيلة</option>
+                            <option value="معسكر">معسكر</option>
+                            <option value="ورقلة">ورقلة</option>
+                            <option value="وهران">وهران</option>
+                            <option value="البيض">البيض</option>
+                            <option value="إليزي">إليزي</option>
+                            <option value="برج بوعريريج">برج بوعريريج</option>
+                            <option value="بومرداس">بومرداس</option>
+                            <option value="الطارف">الطارف</option>
+                            <option value="تندوف">تندوف</option>
+                            <option value="تيسمسيلت">تيسمسيلت</option>
+                            <option value="الوادي">الوادي</option>
+                            <option value="خنشلة">خنشلة</option>
+                            <option value="سوق أهراس">سوق أهراس</option>
+                            <option value="تيبازة">تيبازة</option>
+                            <option value="ميلة">ميلة</option>
+                            <option value="عين الدفلى">عين الدفلى</option>
+                            <option value="النعامة">النعامة</option>
+                            <option value="عين تموشنت">عين تموشنت</option>
+                            <option value="غرداية">غرداية</option>
+                            <option value="غليزان">غليزان</option>
+                            <option value="المغير">المغير</option>
+                            <option value="المنيعة">المنيعة</option>
+                            <option value="أولاد جلال">أولاد جلال</option>
+                            <option value="برج باجي مختار">برج باجي مختار</option>
+                            <option value="بني عباس">بني عباس</option>
+                            <option value="تيميمون">تيميمون</option>
+                            <option value="تقرت">تقرت</option>
+                            <option value="جانت">جانت</option>
+                            <option value="عين صالح">عين صالح</option>
+                            <option value="عين قزام">عين قزام</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>طريقة التوصيل</label>
+                        <div class="delivery-options">
+                            <div class="delivery-option">
+                                <input type="radio" id="home-delivery" name="delivery" value="home" checked>
+                                <label for="home-delivery">التوصيل إلى باب المنزل (<span id="home-fee">800</span> دج)</label>
+                            </div>
+                            
+                            <div class="delivery-option">
+                                <input type="radio" id="municipality-delivery" name="delivery" value="municipality">
+                                <label for="municipality-delivery">التوصيل إلى البلدية (<span id="municipality-fee">500</span> دج)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="municipality-field" class="form-group hidden">
+                        <label for="municipality">البلدية</label>
+                        <input type="text" id="municipality">
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h3>ملخص الطلب</h3>
+                        <div class="summary-item">
+                            <span>مجموع المنتجات:</span>
+                            <span id="products-total">0 دج</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>رسوم التوصيل:</span>
+                            <span id="delivery-fee">0 دج</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>المجموع النهائي:</span>
+                            <span id="final-total">0 دج</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">تأكيد الطلب</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تأكيد الطلب -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">تم تأكيد طلبك</h2>
+                <button type="button" class="close-btn" onclick="hideSuccess()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>تمت تأكيد عملية الشراء بنجاح</h3>
+                <p>شكرًا لطلبك! سنتواصل معك قريبًا لتأكيد تفاصيل الطلب.</p>
+                <button type="button" class="btn-primary" onclick="hideSuccess()">مواصلة التصفح</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تسجيل دخول المدير -->
+    <div id="admin-login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">تسجيل دخول المدير</h2>
+                <button type="button" class="close-btn" onclick="hideAdminLogin()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="admin-login-form">
+                    <div class="form-group">
+                        <label for="username">اسم المستخدم</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">كلمة المرور</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">تسجيل الدخول</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نهاية محتوى الصفحة -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">جميع الحقوق محفوظة &copy; <span id="current-year">2023</span> - Shomoukh</p>
+                <div class="social-links">
+                    <a href="#" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- إضافة المكتبات المطلوبة -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    
+    <!-- استدعاء ملفات JavaScript الخاصة بالموقع -->
+    <script src="supabase-config.js"></script>
+    <script src="elegant-script.js"></script>
+
+    <!-- مكتبة Font Awesome للأيقونات -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- مكتبة Select2 لتحسين شكل القوائم المنسدلة -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المدير | متجر الفساتين</title>
+    <!-- استخدام نسخة مخزنة محلياً من Font Awesome -->
+    <link rel="stylesheet" href="libs/fontawesome/css/all.min.css">
+    <!-- استخدام نسخة مخزنة محلياً من الخطوط -->
+    <link rel="stylesheet" href="libs/fonts/tajawal.css">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <!-- الهيدر مع الشعار -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="images/logo.png" alt="شعار المتجر" class="logo">
+                </div>
+                <h1 class="store-name">لوحة تحكم المدير</h1>
+                
+                <div class="header-actions">
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        تسجيل الخروج
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- القائمة الجانبية -->
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i> الرئيسية</a></li>
+                    <li><a href="#products" data-page="products"><i class="fas fa-tshirt"></i> المنتجات</a></li>
+                    <li><a href="#orders" data-page="orders"><i class="fas fa-shopping-bag"></i> الطلبات</a></li>
+                    <li><a href="#settings" data-page="settings"><i class="fas fa-cog"></i> الإعدادات</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="admin-content">
+            <!-- لوحة الرئيسية -->
+            <section id="dashboard-page" class="admin-page active">
+                <div class="admin-card">
+                    <h2>أهلاً بك في لوحة التحكم</h2>
+                    <p>يمكنك إدارة متجرك من هنا</p>
+                    
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-bag"></i>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">جميع الطلبات</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-check-circle"></i>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">تم التأكيد</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-times-circle"></i>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">ملغية</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-undo"></i>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">روتور</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-truck"></i>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">تم التسليم</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">قيد الانتظار</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- صفحة المنتجات -->
+            <section id="products-page" class="admin-page">
+                <div class="admin-card">
+                    <div class="page-header">
+                        <h2>إدارة المنتجات</h2>
+                        <button id="add-product-btn" class="btn-primary">
+                            <i class="fas fa-plus"></i> إضافة منتج جديد
+                        </button>
+                    </div>
+                    
+                    <div class="products-grid admin-grid">
+                        <!-- ستتم إضافة المنتجات هنا بواسطة جافاسكريبت -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- صفحة الطلبات -->
+            <section id="orders-page" class="admin-page">
+                <div class="admin-card">
+                    <div class="page-header">
+                        <h2>إدارة الطلبات</h2>
+                        <div class="order-filters">
+                            <button class="order-filter-btn active" data-filter="all">الكل</button>
+                            <button class="order-filter-btn" data-filter="confirmed">تم التأكيد</button>
+                            <button class="order-filter-btn" data-filter="cancelled">ملغية</button>
+                            <button class="order-filter-btn" data-filter="returned">روتور</button>
+                            <button class="order-filter-btn" data-filter="delivered">تم التسليم</button>
+                            <button class="order-filter-btn" data-filter="pending">قيد الانتظار</button>
+                        </div>
+                    </div>
+                    
+                    <div class="orders-list">
+                        <!-- ستتم إضافة الطلبات هنا بواسطة جافاسكريبت -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- صفحة الإعدادات -->
+            <section id="settings-page" class="admin-page">
+                <div class="admin-card">
+                    <h2>إعدادات المتجر</h2>
+                    
+                    <form id="settings-form">
+                        <div class="settings-section">
+                            <h3>إعدادات التوصيل</h3>
+                            
+                            <div class="form-group">
+                                <label for="home-delivery-fee">سعر التوصيل المنزلي (دج)</label>
+                                <input type="number" id="home-delivery-fee" value="800" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="municipality-delivery-fee">سعر التوصيل للبلدية (دج)</label>
+                                <input type="number" id="municipality-delivery-fee" value="500" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>معلومات التواصل</h3>
+                            
+                            <div class="form-group">
+                                <label for="phone-number">رقم الهاتف</label>
+                                <input type="tel" id="phone-number" placeholder="أدخل رقم الهاتف">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="facebook">رابط فيسبوك</label>
+                                <input type="url" id="facebook" placeholder="أدخل رابط الفيسبوك">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="instagram">رابط انستغرام</label>
+                                <input type="url" id="instagram" placeholder="أدخل رابط الانستغرام">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">حفظ الإعدادات</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- نافذة إضافة/تعديل منتج -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div></div>
+                <h2 class="modal-title" id="product-modal-title">إضافة منتج جديد</h2>
+                <button type="button" class="close-btn" onclick="hideProductModal()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    
+                    <div class="form-group">
+                        <label for="product-name">اسم المنتج</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-price">السعر (دج)</label>
+                        <input type="number" id="product-price" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>الصورة الرئيسية</label>
+                        <div class="image-upload-container">
+                            <div class="image-preview" id="main-image-preview">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>اضغط أو اسحب صورة هنا</span>
+                            </div>
+                            <input type="file" id="main-image-upload" accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="multiple-angles">
+                            <label for="multiple-angles">زوايا متعددة</label>
+                        </div>
+                    </div>
+                    
+                    <div id="additional-images-container" class="hidden">
+                        <h3>صور إضافية</h3>
+                        <div class="additional-images-grid">
+                            <div class="image-upload-container small">
+                                <div class="image-preview" id="additional-image-1">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <input type="file" class="additional-image-upload" accept="image/*">
+                            </div>
+                            <div class="image-upload-container small">
+                                <div class="image-preview" id="additional-image-2">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <input type="file" class="additional-image-upload" accept="image/*">
+                            </div>
+                            <div class="image-upload-container small">
+                                <div class="image-preview" id="additional-image-3">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <input type="file" class="additional-image-upload" accept="image/*">
+                            </div>
+                            <div class="image-upload-container small">
+                                <div class="image-preview" id="additional-image-4">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <input type="file" class="additional-image-upload" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">حفظ المنتج</button>
+                        <button type="button" class="btn-secondary" onclick="hideProductModal()">إلغاء</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة تفاصيل الطلب -->
+    <div id="order-details-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div></div>
+                <h2 class="modal-title">تفاصيل الطلب</h2>
+                <button type="button" class="close-btn" onclick="hideOrderDetails()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body">
+                <div id="order-details-content">
+                    <!-- سيتم إضافة تفاصيل الطلب هنا بواسطة جافاسكريبت -->
+                </div>
+                
+                <div class="order-actions">
+                    <button class="action-btn confirm-btn" data-action="confirm">
+                        <i class="fas fa-check"></i> تم التأكيد
+                    </button>
+                    <button class="action-btn cancel-btn" data-action="cancel">
+                        <i class="fas fa-times"></i> إلغاء الطلبية
+                    </button>
+                    <button class="action-btn return-btn" data-action="return">
+                        <i class="fas fa-undo"></i> روتور
+                    </button>
+                    <button class="action-btn deliver-btn" data-action="deliver">
+                        <i class="fas fa-truck"></i> تم التسليم
+                    </button>
+                    <button class="action-btn pending-btn" data-action="pending">
+                        <i class="fas fa-clock"></i> قيد الانتظار
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نهاية لوحة المدير -->
+    <div class="admin-footer">
+        <p>جميع الحقوق محفوظة &copy; <span id="current-year">2023</span> Shomoukh - لوحة تحكم المدير</p>
+    </div>
+
+    <!-- إضافة المكتبات المطلوبة -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    
+    <!-- استدعاء ملفات JavaScript الخاصة بالموقع -->
+    <script src="supabase-config.js"></script>
+    <script src="admin-script.js"></script>
+
+    <!-- مكتبة Font Awesome للأيقونات -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- مكتبة Select2 لتحسين شكل القوائم المنسدلة -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+</html> 

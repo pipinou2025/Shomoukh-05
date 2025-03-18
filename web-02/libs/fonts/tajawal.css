@@ -1,0 +1,79 @@
+/* Tajawal Font */
+@font-face {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 300;
+    src: url('https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1l5qjHrFpiQ.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1l8KiHrFpiQ.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 500;
+    src: url('https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1l4qkHrFpiQ.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1l4qkHrFpiQ.woff2') format('woff2');
+    font-display: swap;
+}
+
+/* Montserrat Font */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Hw5aXo.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu173w5aXo.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM73w5aXo.woff2') format('woff2');
+    font-display: swap;
+}
+
+/* Niconne Font */
+@font-face {
+    font-family: 'Niconne';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.gstatic.com/s/niconne/v15/w8gaH2QvRug1_rTfnQKn2XwNqOuyBg.woff2') format('woff2');
+    font-display: swap;
+}
+
+/* الخطوط الاحتياطية */
+body {
+    font-family: 'Tajawal', Arial, sans-serif;
+} 
